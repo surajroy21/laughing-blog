@@ -24,3 +24,15 @@ class Blog(models.Model):
         return self.title
 
     
+class Author(models.Model):
+    first_name = models.CharField(max_length=120)
+    last_name = models.CharField(max_length=120)
+    email = models.EmailField(max_length=120,blank=True,null=True)
+    mobile = models.CharField(max_length=120)
+    
+    def author_fullname(self):
+        full_name = f"{self.first_name} {self.last_name}"
+        return full_name
+
+    def __str__(self):
+        return self.author_fullname()
